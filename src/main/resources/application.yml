@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /maxsorrisso/api
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/maxsorrisodb
+    username: root
+    password: 123
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    hibernate:
+      ddl-auto: none
+
+application:
+  description: Projeto criado para prova de desenvolvedor backend JR
