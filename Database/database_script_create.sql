@@ -56,3 +56,31 @@ select * from tomografia;
 select * from casos;
 select * from doutor;
 
+
+/*
+*       Criação de uma view completa para o casos como solicitado pelo frontend
+*/
+
+CREATE OR REPLACE VIEW casos_format AS
+SELECT
+	c.id id,
+	d.nome nome_doutor,
+	d.crm,
+    CASE
+       WHEN LENGTH(p.nome)-LENGTH(REPLACE(p.nome,' ',''))>=4 THEN
+		CONCAT( LEFT(SUBSTRING_INDEX(p.nome, ' ', -5), 1),LEFT(SUBSTRING_INDEX(p.nome, ' ', -4), 1), LEFT(SUBSTRING_INDEX(p.nome, ' ', -3), 1),  LEFT(SUBSTRING_INDEX(p.nome, ' ', -2), 1), LEFT(SUBSTRING_INDEX(p.nome, ' ', -1), 1))
+	   WHEN LENGTH(p.nome)-LENGTH(REPLACE(p.nome,' ',''))>=3 THEN
+		CONCAT( LEFT(SUBSTRING_INDEX(p.nome, ' ', -4), 1), LEFT(SUBSTRING_INDEX(p.nome, ' ', -3), 1),  LEFT(SUBSTRING_INDEX(p.nome, ' ', -2), 1), LEFT(SUBSTRING_INDEX(p.nome, ' ', -1), 1))
+	   WHEN LENGTH(p.nome)-LENGTH(REPLACE(p.nome,' ',''))>=2 THEN
+		CONCAT( LEFT(SUBSTRING_INDEX(p.nome, ' ', -3), 1),  LEFT(SUBSTRING_INDEX(p.nome, ' ', -2), 1), LEFT(SUBSTRING_INDEX(p.nome, ' ', -1), 1))
+	   WHEN LENGTH(p.nome)-LENGTH(REPLACE(p.nome,' ',''))>=1 THEN
+		CONCAT(LEFT(SUBSTRING_INDEX(p.nome, ' ', -2), 1), LEFT(SUBSTRING_INDEX(p.nome, ' ', -1), 1))
+   END Iniciais,
+   c.data_cirurgia,
+   c.id cod_caso,
+   sc.descricao status_caso
+FROM casos c
+JOIN paciente p ON p.id = c.id_paciente
+JOIN doutor d ON d.id = c.id_doutor
+JOIN status_caso sc ON sc.id = c.id_status
+JOIN tomografia t ON t.id = c.id_tomografia;

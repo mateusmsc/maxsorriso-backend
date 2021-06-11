@@ -6,12 +6,11 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "casos")
 @Data
-public class Casos {
+public class Caso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

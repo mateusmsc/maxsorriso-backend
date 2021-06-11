@@ -1,6 +1,7 @@
 package io.github.mateusmsc.maxsorriso.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -39,5 +40,4 @@ public class Doutor {
     @NotNull
     @Column(name = "crm")
     private String crm;
-
 }

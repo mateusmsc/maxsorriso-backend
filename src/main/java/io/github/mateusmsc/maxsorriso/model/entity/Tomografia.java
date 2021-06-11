@@ -1,12 +1,9 @@
 package io.github.mateusmsc.maxsorriso.model.entity;
 
 import lombok.Data;
-import org.w3c.dom.stylesheets.LinkStyle;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
-import java.util.List;
 
 @Entity
 @Table(name = "tomografia")

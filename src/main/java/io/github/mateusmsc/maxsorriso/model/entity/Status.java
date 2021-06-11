@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "status_caso")
 @Data
@@ -15,6 +14,5 @@ public class Status {
 
     @Column(name = "descricao")
     private String descricao;
-
 
 }

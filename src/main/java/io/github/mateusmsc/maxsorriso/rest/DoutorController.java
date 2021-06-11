@@ -1,7 +1,6 @@
 package io.github.mateusmsc.maxsorriso.rest;
 
 import io.github.mateusmsc.maxsorriso.model.entity.Doutor;
-import io.github.mateusmsc.maxsorriso.model.entity.Paciente;
 import io.github.mateusmsc.maxsorriso.model.repository.DoutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
